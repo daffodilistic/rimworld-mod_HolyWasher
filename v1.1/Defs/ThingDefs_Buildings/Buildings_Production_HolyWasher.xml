@@ -7,7 +7,7 @@
     <thingClass>Building_WorkTable</thingClass>
     <description>The good old washing machine "Halinka 2000" untaints Apparel that has been worn by a corpse.</description>
     <graphicData>
-      <texPath>Things/HolyWasher/Building/washer</texPath>
+      <texPath>Things/HolyWasher/Building/Washer/washer</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(1.3,1.3)</drawSize>
@@ -62,8 +62,8 @@
     <thingClass>Building_WorkTable</thingClass>
     <description>Old metal basin where you wash your clothes to untaint Apparel that has been worn by a corpse.</description>
     <graphicData>
-      <texPath>Things/HolyWasher/Building/basin/basin</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/HolyWasher/Building/Basin/basin</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(1.3,1.3)</drawSize>
     </graphicData>
