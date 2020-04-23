@@ -3,7 +3,7 @@
 Update of Bunkier's and Blacharnias mod for RimWorld 1.1 made by Mlie
 https://steamcommunity.com/sharedfiles/filedetails/?id=1136436925
 
-Further edited and cleaned up by OkraDonkey.  No longer supports 1.0.
+Further edited and cleaned up by OkraDonkey.  No longer supports RimWorld 1.0.
 
 Support-chat:
 https://discord.gg/SuhwVpM
