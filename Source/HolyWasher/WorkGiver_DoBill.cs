@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace HollyWasher
+namespace HolyWasher
 {
 	public abstract class WorkGiver_DoBill : RimWorld.WorkGiver_Scanner
 	{
@@ -71,7 +71,7 @@ namespace HollyWasher
 
                 Bill bill = giver.BillStack [i];
 
-                // use HollyWasher.Worker as a filter so we can use the same tables.
+                // use HolyWasher.Worker as a filter so we can use the same tables.
                 if (bill.recipe.workerClass != typeof(Worker)) {
                     continue;
 				}
@@ -132,7 +132,7 @@ namespace HollyWasher
 			if (building.def.hasInteractionCell) {
 				return building.InteractionCell;
 			}
-			Log.Error ("HollyWash :: Tried to find bill ingredients for " + billGiver + " which has no interaction cell.");
+			Log.Error ("HolyWash :: Tried to find bill ingredients for " + billGiver + " which has no interaction cell.");
 			return forPawn.Position;
 		}
 

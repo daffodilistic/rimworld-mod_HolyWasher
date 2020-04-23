@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace HollyWasher
+namespace HolyWasher
 {
 	public abstract class JobDriver_DoBill : JobDriver
 	{
