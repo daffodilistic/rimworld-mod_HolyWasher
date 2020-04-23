@@ -43,7 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <OutputPath>..\v1.1\Assemblies\</OutputPath>
+    <OutputPath>..\..\v1.1\Assemblies\</OutputPath>
     <DebugType>portable</DebugType>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -83,6 +83,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(ProjectDir)Install.bat" $(ConfigurationName) "$(ProjectDir)" "$(ProjectName)" "About Assemblies Languages Textures v1.1" "LoadFolders.xml README.md LICENSE"</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)Install.bat" $(ConfigurationName) "$(SolutionDir)" "$(ProjectName)" "About Assemblies Languages Textures v1.1" "LoadFolders.xml README.md LICENSE"</PostBuildEvent>
   </PropertyGroup>
 </Project>
