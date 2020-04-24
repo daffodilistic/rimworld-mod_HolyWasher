@@ -12,6 +12,7 @@
             <clipPath>Things/Recipe_WashingMachine</clipPath>
           </li>
         </grains>
+        <muteWhenPaused>True</muteWhenPaused>
         <volumeRange>5~5</volumeRange>
         <pitchRange>0.40~0.80</pitchRange>
         <paramMappings>

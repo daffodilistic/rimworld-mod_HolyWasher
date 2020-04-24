@@ -2,7 +2,6 @@
 <Defs>
 
   <RecipeDef>
-    <workerClass>HolyWasher.Worker</workerClass>
     <defName>HolyWashApparel</defName>
     <label>Wash clothes</label>
     <description>Untaints apparel that has been worn by a corpse.</description>
@@ -12,6 +11,10 @@
     <workSkill>Crafting</workSkill>
     <effectWorking>Tailor</effectWorking>
     <soundWorking>Recipe_WashingMachine</soundWorking>
+    <recipeUsers>
+      <li>HolyBasin</li>
+      <li>HolyWasher</li>
+    </recipeUsers>
     <ingredients>
       <li>
         <filter>
