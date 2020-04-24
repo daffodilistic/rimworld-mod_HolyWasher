@@ -54,7 +54,7 @@ REM MONO_EXE = C:\Program Files\Mono\bin\mono.exe
 REM PDB2MDB_PATH = C:\Program Files\Mono\lib\mono\4.5\pdb2mdb.exe
 REM RIMWORLD_DIR_STEAM = C:\Program Files (x86)\Steam\steamapps\common\RimWorld
 REM RIMWORLD_DIR_STANDALONE = %USERPROFILE%\RimWorld1-0-2408Win64
-REM RIMWORLD_MOD_DEBUG = --debugger-agent=transport=dt_socket,address=127.0.0.1:56000,server=y
+REM RIMWORLD_MOD_DEBUG = --debugger-agent=transport=dt_socket,server=y,address=127.0.0.1:56000,suspend=y,no-hide-debugger
 REM
 REM Finally, configure Visual Studio's Debug configuration with the rimworld exe as an external
 REM program and set the working directory to the directory containing the exe.
@@ -69,7 +69,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 SET SOLUTION_DIR=%~2
 SET SOLUTION_DIR=%SOLUTION_DIR:~0,-7%
 SET TARGET_DIR=%RIMWORLD_DIR_STEAM%\Mods\%~3
-REM SET TARGET_DEBUG_DIR=%RIMWORLD_DIR_STANDALONE%\Mods\%~3
+SET TARGET_DEBUG_DIR=%RIMWORLD_DIR_STANDALONE%\Mods\%~3
 SET ZIP_EXE="C:\Program Files\7-Zip\7z.exe"
 
 SET HARMONY_PATH=%SOLUTION_DIR%Assemblies\0Harmony.dll
