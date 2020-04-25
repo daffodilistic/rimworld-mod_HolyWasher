@@ -27,8 +27,7 @@ namespace HolyWasher
 
     // NOTE: The wonderful TD Enhancement Pack has an option that introduces some color varieties for newly spawned apparel.
     //       If enabled, this option causes some color changes after washing since we're actually making newapparel.
-    //       Either disable the option, or go with the concept of heavy bleach causing some colors to run during washing.
-    //       Perhaps in the future, a compatibility patch could eliminate this.
+    //       So we add a custom property that we can use to mark Washed clothes, then patch TD to ignore those.
 
     // TO DO: Colonists always drop the washed apparel instead of delivering it to the stockpile designated by the bill.
     //        Verify balance of overall and relative work speeds
