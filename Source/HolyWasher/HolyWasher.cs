@@ -45,7 +45,6 @@ namespace HolyWasher
         }
     }
 
-    // Stolen from [RF] Pawns are Capable! [1.0] then adapted to RimWorld 1.1 and Harmony 2.0.0.10
     [HarmonyPatch]
     static class Patch_TDPack_Variate
     {
@@ -103,10 +102,16 @@ namespace HolyWasher
     public static class HolyWasher
     {
         [HarmonyPostfix]
-        public static IEnumerable<Thing> PostFix(IEnumerable<Thing> cleanClothes, RecipeDef recipeDef, List<Thing> ingredients)
+        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, List<Thing> ingredients)
         {
-            // This method needed to be an iterator block to handle the `yield` so we made it a pass-through postfix.
-            // Harmony requires that if it isn't a void, the first argument much match its type.
+            // Prepare a new list to collect products
+            List<Thing> products = new List<Thing>();
+            // Add any products from the existing method.  There will be none if the recipe was HolyWashApparel.
+            foreach (Thing thing in __result)
+            {
+                products.Add(thing);
+            }
+
             if (recipeDef.defName == "HolyWashApparel")
             {
                 // The "ingredient" is the tainted apparel.
@@ -139,11 +144,13 @@ namespace HolyWasher
 
                 // No need to untaint it since it's new.
                 // Return the new apparel to the bill so it can be delivered or dropped.
-                yield return cleanApparel;
+                products.Add(cleanApparel);
             }
 
-            // Yield back just in case some other recipe finds its way into this patch.
-            yield break;
+            // give the updated or original product list back to MakeRecipeProducts.
+            IEnumerable<Thing> output = products;
+            __result = output;
+
         }
     }
 
