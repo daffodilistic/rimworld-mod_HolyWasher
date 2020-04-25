@@ -4,7 +4,7 @@ using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
-
+using Verse.AI;
 
 namespace HolyWasher
 {
@@ -101,20 +101,45 @@ namespace HolyWasher
     public static class HolyWasher
     {
         [HarmonyPostfix]
-        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, List<Thing> ingredients)
+        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients)
         {
             // Prepare a new list to collect products
             List<Thing> products = new List<Thing>();
-            // Add any products from the existing method.  There will be none if the recipe was HolyWashApparel.
-            foreach (Thing thing in __result)
-            {
-                products.Add(thing);
-            }
 
             if (recipeDef.defName == "HolyWashApparel")
             {
+                // Destroy the dummy product (1 Steel) from our HolyWashApparel recipe.
+                // It seems silly to specify a product then immediately destroy it, but the next step in MakeNewToils only tells pawns
+                //   to deliver products if the RecipeDef has at least one product or specialproduct.
+                // And we can't specify the real product in our recipe because it depends what the ingredient is.
+                //
+                // This is kinda hacky but it's a simple way to get the worker to haul the newly cleaned apparel to a stockpile.
+                // Nobody will ever see this unless something goes horribly wrong - the Steel won't exist for more than a fraction of a tick.
+                // If anyone reading this knows of a better way, I (OkraDonkey) would love to learn about it.
+                //
+                foreach (Thing thing in __result)
+                {
+                    thing.Destroy(DestroyMode.Vanish);
+                }
+
                 // The "ingredient" is the tainted apparel.
                 Thing dirtyApparel = ingredients[0];
+
+                //
+                // If we wanted to add any special features, this would be the place to add them.
+                // Ideas:
+                //   - washer or washing-machine failure
+                //   - accidental damage to the original or replacement
+                //   - destroyed or deconstructed ingredient apparel
+                //   - make pawn vomit from the stench every now and then
+                //   - make a mess on the surrounding floor (perhaps basin only)
+                //
+
+                // Example: ~1 in 20 chance to vomit after washing tainted clothes
+                if (Rand.Value < 0.05)
+                {
+                    worker.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Vomit), JobCondition.InterruptForced, null, true, true, null, null, false, false);
+                }
 
                 // Once we know what it's made of, we can create our replacement
                 ThingDef dirtyStuff = dirtyApparel.Stuff;
@@ -138,15 +163,24 @@ namespace HolyWasher
                 }
                 cleanApparel.SetColor(dirtyApparel.DrawColor);
 
-                // Mark apparel as washed so TD and other mods can know to not alter it upon spawning
+                // Mark apparel as washed so TDPack (and other mods) can know to not alter it upon spawning
                 cleanApparel.def.GetModExtension<LaundryTracker>().wasWashed = true;
 
                 // No need to untaint it since it's new.
                 // Return the new apparel to the bill so it can be delivered or dropped.
                 products.Add(cleanApparel);
             }
+            else
+            {
+                // This isn't a HolyWasher recipe.
+                // Add any non-HolyWasher products from the existing method.
+                foreach (Thing thing in __result)
+                {
+                    products.Add(thing);
+                }
+            }
 
-            // give the updated or original product list back to MakeRecipeProducts.
+            // Pass the updated or original product list back to MakeRecipeProducts.
             IEnumerable<Thing> output = products;
             __result = output;
 

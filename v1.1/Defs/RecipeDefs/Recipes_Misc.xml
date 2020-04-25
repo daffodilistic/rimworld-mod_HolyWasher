@@ -25,6 +25,9 @@
         <count>1</count>
       </li>
     </ingredients>
+    <products>
+      <Steel>1</Steel>
+    </products>
     <fixedIngredientFilter>
       <categories>
         <li>Apparel</li>
