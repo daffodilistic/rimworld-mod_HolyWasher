@@ -82,6 +82,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="$(SolutionDir)\..\*.xml" />
+    <UpToDateCheckInput Include="$(SolutionDir)\..\*.jpg" />
+    <UpToDateCheckInput Include="$(SolutionDir)\..\*.ogg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)Install.bat" $(ConfigurationName) "$(SolutionDir)" "$(ProjectName)" "About Assemblies Languages Textures v1.1" "LoadFolders.xml README.md LICENSE"</PostBuildEvent>
