@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
+
 
 namespace HolyWasher
 {
@@ -42,6 +45,60 @@ namespace HolyWasher
         }
     }
 
+    // Stolen from [RF] Pawns are Capable! [1.0] then adapted to RimWorld 1.1 and Harmony 2.0.0.10
+    [HarmonyPatch]
+    static class Patch_TDPack_Variate
+    {
+        static MethodBase target;
+        static bool Prepare()
+        {
+            var mod = LoadedModManager.RunningMods.FirstOrDefault(m => m.PackageId == "uuugggg.tdpack");
+            if (mod == null)
+            {
+                Log.Warning("HolyWasher did NOT find uuugggg.tdpack");
+                return false;
+            }
+            var type = mod.assemblies.loadedAssemblies.FirstOrDefault(a => a.GetName().Name == "TD_Enhancement_Pack").GetType("TD_Enhancement_Pack.ColorVariation");
+            if (type == null)
+            {
+                Log.Warning("HolyWasher: TD patch failed. ColorVariation class not found!");
+                return false;
+            }
+            target = AccessTools.DeclaredMethod(type, "Variate");
+            if (target == null)
+            {
+                Log.Warning("HolyWasher: TD patch failed. Variate method not found!");
+                return false;
+            }
+            // We could check to see if TD has Color Variations enabled, but the cost to just patch it anyway is small.
+            Log.Message("HolyWasher: TD patched.");
+            return true;
+        }
+        static MethodBase TargetMethod()
+        {
+            return target;
+        }
+        //static IEnumerable<Thing> Prefix(IEnumerable<Thing> things)
+        static bool Prefix(ref IEnumerable<Thing> __result, IEnumerable<Thing> things)
+        {
+            foreach (Thing t in things)
+            {
+                if (t.def.GetModExtension<LaundryTracker>()?.wasWashed ?? true)
+                {
+                    // Allow Variate to continue passing along the "things" but don't actually do anything to them.
+                    __result = things;
+                    return false;
+                }
+                else
+                {
+                    // Nothing changed; allow Variate to slightly alter color of new apparel
+                    return true;
+                }
+            }
+            return true;
+        }
+    }
+
     [HarmonyPatch(typeof(GenRecipe), "MakeRecipeProducts")]
     public static class HolyWasher
     {
@@ -77,6 +134,9 @@ namespace HolyWasher
                 }
                 cleanApparel.SetColor(dirtyApparel.DrawColor);
 
+                // Mark apparel as washed so TD and other mods can know to not alter it upon spawning
+                cleanApparel.def.GetModExtension<LaundryTracker>().wasWashed = true;
+
                 // No need to untaint it since it's new.
                 // Return the new apparel to the bill so it can be delivered or dropped.
                 yield return cleanApparel;
@@ -85,5 +145,10 @@ namespace HolyWasher
             // Yield back just in case some other recipe finds its way into this patch.
             yield break;
         }
+    }
+
+    public class LaundryTracker : DefModExtension
+    {
+        public bool wasWashed = false;
     }
 }
