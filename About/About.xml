@@ -20,30 +20,30 @@
   <loadAfter>
     <li>Ludeon.RimWorld</li>
   </loadAfter>
-  <description>
-    Holy Washer adds the ability for pawns to wash off tainted effect from clothes the "pragmatic" way. No more taint on that apparel!
-    Disclaimer: Requires research and using a wash basin or washing machine. We are not responsible for your colonists profiteering from operating a cannibalist laundromat colony.
+  <description><![CDATA[Holy Washer adds the ability for pawns to wash off tainted effect from clothes the "pragmatic" way. No more taint on that apparel!
+Disclaimer: Requires research and using a wash basin or washing machine. We are not responsible for your colonists profiteering from operating a cannibalist laundromat colony.
 
-    -- PACKAGE CONTENTS --
-    [Production Building] Wash Basin - allows pawns to wash tainted clothes manually. Requires Basic Washing research.
-    [Production Building] Washing Machine - allows clothes to be washed with electricity without having a pawn to work on it. Requires Advanced Washing research.
-    [Research Topics] Basic Washing, Advanced Washing
+<color=orange><b>PACKAGE CONTENTS</b></color>
+[Production Building] Wash Basin - allows pawns to wash tainted clothes manually. Requires Basic Washing research.
+[Production Building] Washing Machine - allows clothes to be washed with electricity without having a pawn to work on it. Requires Advanced Washing research.
+[Research Topics] Basic Washing, Advanced Washing
 
-    -- PACKAGE NOTES --
-    Update of sma342, Blacharnias mod for RimWorld 1.1 with OkraDonkey's refactoring work. No longer supports RimWorld 1.0.
+<color=orange><b>PACKAGE NOTES</b></color>
+Update of sma342, Blacharnias mod for RimWorld 1.1 with OkraDonkey's refactoring work. No longer supports RimWorld 1.0.
 
-    Steam Workshop link:
-    https://steamcommunity.com/sharedfiles/filedetails/?id=1136436925
+Steam Workshop link:
+https://steamcommunity.com/sharedfiles/filedetails/?id=1136436925
 
-    Source code:
-    https://github.com/daffodilistic/HolyWasher
+Source code:
+https://github.com/daffodilistic/HolyWasher
 
-    -- AUTHORS --
-    C# Code - Blacharnia, Mlie, OkraDonkey
-    XML Code and Artwork - sma342, OkraDonkey
-    Additional C# help - erdelf
-    1.0 Textures - HCSK Team
-    Steam Workshop - Bunkier, Mlie
-    1.2 Update - daffodilistic
+<color=cyan><b>AUTHORS</b></color>
+C# Code - Blacharnia, Mlie, OkraDonkey
+XML Code and Artwork - sma342, OkraDonkey
+Additional C# help - erdelf
+1.0 Textures - HCSK Team
+Steam Workshop - Bunkier, Mlie
+1.2 Update - daffodilistic
+]]>
   </description>
 </ModMetaData>
