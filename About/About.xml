@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
-  <name>HolyWasher (Continued)</name>
+  <name>[1.1, 1.2] Holy Washer (Continued)</name>
   <packageId>Mlie.HolyWasher</packageId>
   <author>Mlie</author>
   <url>https://github.com/daffodilistic/HolyWasher</url>
@@ -20,7 +20,8 @@
   <loadAfter>
     <li>Ludeon.RimWorld</li>
   </loadAfter>
-  <description><![CDATA[Holy Washer adds the ability for pawns to wash off tainted effect from clothes the "pragmatic" way. No more taint on that apparel!
+  <description>
+  <![CDATA[Holy Washer adds the ability for pawns to wash off tainted effect from clothes the "pragmatic" way. No more taint on that apparel!
 Disclaimer: Requires research and using a wash basin or washing machine. We are not responsible for your colonists profiteering from operating a cannibalist laundromat colony.
 
 <color=orange><b>PACKAGE CONTENTS</b></color>
@@ -29,13 +30,10 @@ Disclaimer: Requires research and using a wash basin or washing machine. We are 
 [Research Topics] Basic Washing, Advanced Washing
 
 <color=orange><b>PACKAGE NOTES</b></color>
+RW Vanilla: <color=green><b>✓</b></color> (Tested)
+RW Royalty DLC: <color=yellow><b>?</b></color> (Not tested)
+
 Update of sma342, Blacharnias mod for RimWorld 1.1 with OkraDonkey's refactoring work. No longer supports RimWorld 1.0.
-
-Steam Workshop link:
-https://steamcommunity.com/sharedfiles/filedetails/?id=1136436925
-
-Source code:
-https://github.com/daffodilistic/HolyWasher
 
 <color=cyan><b>AUTHORS</b></color>
 C# Code - Blacharnia, Mlie, OkraDonkey

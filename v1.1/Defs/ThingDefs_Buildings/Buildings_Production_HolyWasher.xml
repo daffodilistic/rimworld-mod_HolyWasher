@@ -10,7 +10,7 @@
       <Steel>150</Steel>
       <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
-    <minifiedDef>MinifiedThing</minifiedDef>
+   <minifiedDef>MinifiedThing</minifiedDef>
     <graphicData>
       <texPath>Things/HolyWasher/Building/Washer/washer</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -23,11 +23,15 @@
       <li>Electricity</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
     <statBases>
       <WorkToBuild>300</WorkToBuild>
       <MaxHitPoints>180</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <Cleanliness>0</Cleanliness>
+      <Mass>75</Mass>
     </statBases>
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <useHitPoints>True</useHitPoints>
@@ -85,12 +89,16 @@
       <li>BasicWashing</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
     <statBases>
       <WorkToBuild>300</WorkToBuild>
       <MaxHitPoints>180</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <Cleanliness>0</Cleanliness>
       <WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
+      <Mass>12.5</Mass>
     </statBases>
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <useHitPoints>True</useHitPoints>
