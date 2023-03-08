@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -101,7 +102,8 @@ namespace HolyWasher
     public static class HolyWasher
     {
         [HarmonyPostfix]
-        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients)
+        // Original method: IEnumerable<Thing> MakeRecipeProducts(RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver)
+        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver)
         {
             // Prepare a new list to collect products
             List<Thing> products = new List<Thing>();
@@ -110,7 +112,7 @@ namespace HolyWasher
             {
                 // Destroy the dummy product (1 Steel) from our HolyWashApparel recipe.
                 // It seems silly to specify a product then immediately destroy it, but the next step in MakeNewToils only tells pawns
-                //   to deliver products if the RecipeDef has at least one product or specialproduct.
+                // to deliver products if the RecipeDef has at least one product or specialproduct.
                 // And we can't specify the real product in our recipe because it depends what the ingredient is.
                 //
                 // This is kinda hacky but it's a simple way to get the worker to haul the newly cleaned apparel to a stockpile.
@@ -136,13 +138,18 @@ namespace HolyWasher
                 //
 
                 // Example: ~1 in 20 chance to vomit after washing tainted clothes
-                if (Rand.Value < 0.05)
+                Thing building = (Thing) billGiver;
+                //Log.Error(string.Concat("HolyWasher: billGiver is ", building.def));
+                if (building.def.ToString() == "HolyBasin")
                 {
-                    worker.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Vomit), JobCondition.InterruptForced, null, true, true, null, null, false, false);
+                    if (Rand.Value < 0.05) {
+                        worker.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Vomit), JobCondition.InterruptForced, null, true, true, null, null, false, false);
+                    }
                 }
 
                 // Once we know what it's made of, we can create our replacement
                 ThingDef dirtyStuff = dirtyApparel.Stuff;
+                //Apparel cleanApparel = (Apparel) ThingMaker.MakeThing(dirtyApparel.def, dirtyStuff);
                 Thing cleanApparel = ThingMaker.MakeThing(dirtyApparel.def, dirtyStuff);
 
                 // Set the new item's quality to match the old
@@ -165,6 +172,13 @@ namespace HolyWasher
 
                 // Mark apparel as washed so TDPack (and other mods) can know to not alter it upon spawning
                 cleanApparel.def.GetModExtension<LaundryTracker>().wasWashed = true;
+                //Type myType = typeof(Apparel);
+                //FieldInfo myFieldInfo = myType.GetField("wornByCorpseInt", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                //Log.Error(string.Concat("HolyWasher: dirtyApparel.wornByCorpseInt is ", myFieldInfo.GetValue(dirtyApparel)));
+                //Log.Error(string.Concat("HolyWasher: cleanApparel.wornByCorpseInt is ", myFieldInfo.GetValue(cleanApparel)));
+
+                //myFieldInfo.SetValue(cleanApparel, false);
 
                 // No need to untaint it since it's new.
                 // Return the new apparel to the bill so it can be delivered or dropped.
