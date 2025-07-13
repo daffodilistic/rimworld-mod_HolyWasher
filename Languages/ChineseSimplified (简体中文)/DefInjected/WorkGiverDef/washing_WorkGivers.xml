@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: holy wash -->
+  <HolyWash.label>清洗</HolyWash.label>
+  <!-- EN: washing -->
+  <HolyWash.gerund>正在清洗</HolyWash.gerund>
+  <!-- EN: wash -->
+  <HolyWash.verb>洗</HolyWash.verb>
+  
+</LanguageData>

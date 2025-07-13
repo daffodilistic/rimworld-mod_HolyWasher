@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Wash clothes -->
+  <HolyWashApparel.label>洗衣服</HolyWashApparel.label>
+  <!-- EN: Removes the Worn By Corpse effect from the apparel. -->
+  <HolyWashApparel.description>移除死人衣服带来的副作用。</HolyWashApparel.description>
+  <!-- EN: washing clothes. -->
+  <HolyWashApparel.jobString>正在洗衣服</HolyWashApparel.jobString>
+  
+</LanguageData>

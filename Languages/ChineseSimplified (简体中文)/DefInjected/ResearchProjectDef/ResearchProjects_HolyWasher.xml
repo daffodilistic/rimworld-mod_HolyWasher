@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: advanced washing -->
+  <AdvancedWashing.label>进阶清洗</AdvancedWashing.label>
+  <!-- EN: Learn secrets of old washing machines and construct your own one. -->
+  <AdvancedWashing.description>学习古老洗衣机的秘密来让你能够自己建造一个。</AdvancedWashing.description>
+  
+  <!-- EN: basic washing -->
+  <BasicWashing.label>基础清洗</BasicWashing.label>
+  <!-- EN: Advanced construction techniques allow for production of the metal basin to wash clothes -->
+  <BasicWashing.description>建造一个能够清洗衣物的进阶建筑物。</BasicWashing.description>
+  
+</LanguageData>

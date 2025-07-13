@@ -16,9 +16,11 @@ Non-Steam version: https://github.com/sma342/HolyWasher
 *The following is the list of people who have contributed to this mod in some way, shape or form:*
 - Original C# Code - Blacharnia
 - C# Code - Mlie
-- XML Code and Artwork - Bunkier
 - Additional C# help - erdelf
+- XML Code and Artwork - Bunkier
 - Refactoring - OkraDonkey
+- CN Translation - ccj66629 
+- PL Translation - Bunkier
 - 1.0 Textures - HCSK Team
 - 1.1 compatibility - daffodilistic
 - 1.2 compatibility - daffodilistic

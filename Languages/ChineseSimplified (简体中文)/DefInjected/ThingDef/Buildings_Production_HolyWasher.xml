@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Metal Basin -->
+  <HolyBasin.label>金属盆</HolyBasin.label>
+  <!-- EN: Old metal basin where you wash your clothes to remove a worn by corpse effect from Apparel. -->
+  <HolyBasin.description>用来清洗死人衣物的古老金属盆。</HolyBasin.description>
+  
+  <!-- EN: Washing Machine -->
+  <HolyWasher.label>洗衣机</HolyWasher.label>
+  <!-- EN: The good old washing machine "Halinka 2000" removes a worn by corpse effect from Apparel. -->
+  <HolyWasher.description>优秀的古老洗衣机“哈林卡2000”，可以移除死人衣物的效果。</HolyWasher.description>
+  
+</LanguageData>
