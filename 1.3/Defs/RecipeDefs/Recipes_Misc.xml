@@ -1,19 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <RecipeDef>
-    <defName>HolyWashApparel</defName>
+    <workerClass>HollyWasher.Worker</workerClass>
+    <defName>HollyWashApparel</defName>
     <label>Wash clothes</label>
-    <description>Untaints apparel that has been worn by a corpse.</description>
+    <description>Removes the Worn By Corpse effect from the apparel.</description>
     <jobString>washing clothes.</jobString>
     <workAmount>500</workAmount>
     <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <workSkill>Crafting</workSkill>
     <effectWorking>Tailor</effectWorking>
     <soundWorking>Recipe_WashingMachine</soundWorking>
-    <recipeUsers>
-      <li>HolyBasin</li>
-      <li>HolyWasher</li>
-    </recipeUsers>
     <ingredients>
       <li>
         <filter>
@@ -24,9 +21,6 @@
         <count>1</count>
       </li>
     </ingredients>
-    <products>
-      <Steel>1</Steel>
-    </products>
     <fixedIngredientFilter>
       <categories>
         <li>Apparel</li>

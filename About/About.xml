@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>[1.1, 1.2] Holy Washer (Continued)</name>
   <packageId>Mlie.HolyWasher</packageId>
@@ -32,18 +31,29 @@ Disclaimer: Requires research and using a wash basin or washing machine. We are 
 [Research Topics] Basic Washing, Advanced Washing
 
 <color=orange><b>PACKAGE NOTES</b></color>
-RW Vanilla: <color=green><b>✓</b></color> (Tested)
-RW Royalty DLC: <color=yellow><b>?</b></color> (Not tested)
-
-Update of sma342, Blacharnias mod for RimWorld 1.1 with OkraDonkey's refactoring work. No longer supports RimWorld 1.0.
+Update of Bukier's mod for RimWorld 1.1+ with OkraDonkey's refactoring work.
 
 <color=cyan><b>AUTHORS</b></color>
-C# Code - Blacharnia, Mlie, OkraDonkey
-XML Code and Artwork - sma342, OkraDonkey
+<i>
+Due to the crazy nature of Steam Workshop modding, crediting the authors of this mod are a bit of a mess.
+The following is the list of people who have contributed to this mod in some way, shape or form:
+</i>
+Original C# Code - Blacharnia
+C# Code - Mlie
+XML Code and Artwork - Bunkier
 Additional C# help - erdelf
+Refactoring - OkraDonkey
 1.0 Textures - HCSK Team
-Steam Workshop - Bunkier, Mlie
-1.2 Update - daffodilistic
+1.1 compatibility - daffodilistic
+1.2 compatibility - daffodilistic
+1.3 compatibility - Bunkier
+1.4 compatibility - ccharon
+1.5 compatibility - Kender
+1.6 compatibility - daffodilistic
+
+<color=white><b>External Links</b></color>
+[url=https://steamcommunity.com/linkfilter/?url=https://ludeon.com/forums/index.php?topic=35664.0]Forums[/url]
+[url=https://steamcommunity.com/linkfilter/?url=https://github.com/daffodilistic/rimworld-mod_HolyWasher]Non-steam version[/url]
 ]]>
   </description>
 </ModMetaData>
