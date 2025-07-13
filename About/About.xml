@@ -41,15 +41,18 @@ Update of Bukier's mod for RimWorld 1.1+ with OkraDonkey's refactoring work.
 
 If Bunkier updates the mod, this package will be discontinued.
 
+This mod can be downloaded outside of Steam Workshop at https://github.com/daffodilistic/rimworld-mod_HolyWasher
 
 <color=cyan><b>AUTHORS</b></color>
 <i>Due to the crazy nature of Steam Workshop modding, crediting the authors of this mod are a bit of a mess.
 The following is the list of people who have contributed to this mod in one way or another:</i>
 Original C# Code - Blacharnia
 C# Code - Mlie
-XML Code and Artwork - Bunkier
 Additional C# help - erdelf
+XML Code and Artwork - Bunkier
 Refactoring - OkraDonkey
+CN Translation - ccj66629 
+PL Translation - Bunkier
 1.0 Textures - HCSK Team
 1.1 compatibility - daffodilistic
 1.2 compatibility - daffodilistic
