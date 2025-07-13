@@ -25,7 +25,9 @@
   </loadAfter>
   <description>
   <![CDATA[Holy Washer adds the ability for pawns to wash off tainted effect from clothes the "pragmatic" way. No more taint on that apparel!
+
 Disclaimer: Requires research and using a wash basin or washing machine. We are not responsible for your colonists profiteering from operating a cannibalist laundromat colony.
+
 
 <color=orange><b>PACKAGE CONTENTS</b></color>
 [Production Building] Wash Basin - allows pawns to wash tainted clothes manually. Requires Basic Washing research.
@@ -33,17 +35,16 @@ Disclaimer: Requires research and using a wash basin or washing machine. We are 
 [Research Topics] Basic Washing, Advanced Washing
 
 <color=orange><b>PACKAGE NOTES</b></color>
-NOTE: QFE = Quick Fix Engineering, a term borrowed from Microsoft. Meaning that this
-mod is a quick fix for the original Holy Washer mod by Bunkier, which was not updated for the latest RimWorld versions.
+NOTE: QFE = Quick Fix Engineering, a term borrowed from Microsoft. Meaning that this mod is a quick fix for the original Holy Washer mod by Bunkier, which was not updated for the latest RimWorld versions.
 
 Update of Bukier's mod for RimWorld 1.1+ with OkraDonkey's refactoring work.
+
 If Bunkier updates the mod, this package will be discontinued.
 
+
 <color=cyan><b>AUTHORS</b></color>
-<i>
-Due to the crazy nature of Steam Workshop modding, crediting the authors of this mod are a bit of a mess.
-The following is the list of people who have contributed to this mod in some way, shape or form:
-</i>
+<i>Due to the crazy nature of Steam Workshop modding, crediting the authors of this mod are a bit of a mess.
+The following is the list of people who have contributed to this mod in one way or another:</i>
 Original C# Code - Blacharnia
 C# Code - Mlie
 XML Code and Artwork - Bunkier
@@ -56,10 +57,6 @@ Refactoring - OkraDonkey
 1.4 compatibility - ccharon
 1.5 compatibility - Kender
 1.6 compatibility - daffodilistic
-
-<color=white><b>External Links</b></color>
-[url=https://steamcommunity.com/linkfilter/?url=https://ludeon.com/forums/index.php?topic=35664.0]Forums[/url]
-[url=https://steamcommunity.com/linkfilter/?url=https://github.com/daffodilistic/rimworld-mod_HolyWasher]Non-steam version[/url]
 ]]>
   </description>
 </ModMetaData>
