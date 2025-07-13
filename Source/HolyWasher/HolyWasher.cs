@@ -46,31 +46,36 @@ namespace HolyWasher
     }
 
     [HarmonyPatch]
+    // This patch is to fix color changing on apparel we spawned, due to the TD Enhancement Pack.
     static class Patch_TDPack_Variate
     {
         static MethodBase target;
+        // Return false to indicate either failed loading, or that the patch is not needed.
         static bool Prepare()
         {
             var mod = LoadedModManager.RunningMods.FirstOrDefault(m => m.PackageId == "uuugggg.tdpack");
-            if (mod == null)
+            if (mod != null)
             {
-                Log.Warning("HolyWasher did NOT find uuugggg.tdpack");
+                Log.Warning("HolyWasher: did NOT find uuugggg.tdpack");
+                var type = mod.assemblies.loadedAssemblies.FirstOrDefault(a => a.GetName().Name == "TD_Enhancement_Pack").GetType("TD_Enhancement_Pack.ColorVariation");
+                if (type == null)
+                {
+                    Log.Warning("HolyWasher: TD patch failed. ColorVariation class not found!");
+                }
+                target = AccessTools.DeclaredMethod(type, "Variate");
+                if (target == null)
+                {
+                    Log.Warning("HolyWasher: TD patch failed. Variate method not found!");
+                    return false;
+                }
+                Log.Message("HolyWasher: TD patched.");
+            }
+            else
+            {
+                Log.Warning("HolyWasher: TD Pack not installed, skipping patch");
                 return false;
             }
-            var type = mod.assemblies.loadedAssemblies.FirstOrDefault(a => a.GetName().Name == "TD_Enhancement_Pack").GetType("TD_Enhancement_Pack.ColorVariation");
-            if (type == null)
-            {
-                Log.Warning("HolyWasher: TD patch failed. ColorVariation class not found!");
-                return false;
-            }
-            target = AccessTools.DeclaredMethod(type, "Variate");
-            if (target == null)
-            {
-                Log.Warning("HolyWasher: TD patch failed. Variate method not found!");
-                return false;
-            }
-            // We could check to see if TD has Color Variations enabled, but the cost to just patch it anyway is small.
-            Log.Message("HolyWasher: TD patched.");
+            Log.Message("HolyWasher: HolyWasher loaded");
             return true;
         }
         static MethodBase TargetMethod()
@@ -102,8 +107,30 @@ namespace HolyWasher
     public static class HolyWasher
     {
         [HarmonyPostfix]
+        // v1.1 to v1.2
         // Original method: IEnumerable<Thing> MakeRecipeProducts(RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver)
         public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver)
+        {
+            HolyWasher.spawnWashedApparel(ref __result, recipeDef, worker, ingredients, billGiver);
+        }
+
+        [HarmonyPostfix]
+        // v1.3 only
+        // Original method: IEnumerable<Thing> MakeRecipeProducts(RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver, Precept_ThingStyle precept = null)
+        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver, Precept_ThingStyle precept = null)
+        {
+            HolyWasher.spawnWashedApparel(ref __result, recipeDef, worker, ingredients, billGiver);
+        }
+
+        [HarmonyPostfix]
+        // v1.4 and above
+        // Original method: IEnumerable<Thing> MakeRecipeProducts(RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver, Precept_ThingStyle precept = null, ThingStyleDef style = null, int? overrideGraphicIndex = null)
+        public static void PostFix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver, Precept_ThingStyle precept = null, ThingStyleDef style = null, int? overrideGraphicIndex = null)
+        {
+            HolyWasher.spawnWashedApparel(ref __result, recipeDef, worker, ingredients, billGiver);
+        }
+
+        public static void spawnWashedApparel(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, IBillGiver billGiver)
         {
             // Prepare a new list to collect products
             List<Thing> products = new List<Thing>();
@@ -138,11 +165,12 @@ namespace HolyWasher
                 //
 
                 // Example: ~1 in 20 chance to vomit after washing tainted clothes
-                Thing building = (Thing) billGiver;
+                Thing building = (Thing)billGiver;
                 //Log.Error(string.Concat("HolyWasher: billGiver is ", building.def));
                 if (building.def.ToString() == "HolyBasin")
                 {
-                    if (Rand.Value < 0.05) {
+                    if (Rand.Value < 0.05)
+                    {
                         worker.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Vomit), JobCondition.InterruptForced, null, true, true, null, null, false, false);
                     }
                 }
@@ -197,7 +225,6 @@ namespace HolyWasher
             // Pass the updated or original product list back to MakeRecipeProducts.
             IEnumerable<Thing> output = products;
             __result = output;
-
         }
     }
 
